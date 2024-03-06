@@ -1,6 +1,7 @@
 // Подключение необходимых модулей
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // Подключение к базе данных MongoDB
 mongoose.connect('mongodb://localhost:27017/bilet_operator', {
@@ -26,6 +27,8 @@ const Ticket = mongoose.model('Ticket', ticketSchema);
 
 // Создание экземпляра приложения Express
 const app = express();
+// Подключаем CORS
+app.use(cors());
 
 // Использование middleware для обработки тел запросов в формате JSON
 app.use(express.json());
